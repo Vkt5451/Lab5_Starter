@@ -1,11 +1,10 @@
-// Debugging: Verify script is loading
-console.log("expose.js loaded");
+window.addEventListener('DOMContentLoaded', init)
 
 // Initialize confetti
 const jsConfetti = new JSConfetti();
 
-// Wait for DOM to be ready
-document.addEventListener('DOMContentLoaded', () => {
+
+function init(){
   console.log("DOM fully loaded");
   
   // Get all DOM elements
@@ -65,10 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // Shoot confetti if party horn is selected
       if (hornSelect.value === 'party-horn') {
         jsConfetti.addConfetti({
-          emojis: ['🎉', '🎊', '✨', '🥳'],
+          emojis: ['🎉', '🎊', '✨'],
           emojiSize: 50,
           confettiNumber: 100,
         });
+        
         console.log("Confetti launched!");
       }
     } catch (error) {
@@ -80,4 +80,4 @@ document.addEventListener('DOMContentLoaded', () => {
   hornSelect.value = 'air-horn'; // Set default selection
   hornSelect.dispatchEvent(new Event('change')); // Trigger change handler
   volumeSlider.dispatchEvent(new Event('input')); // Trigger volume handler
-});
+};
